@@ -16,7 +16,18 @@ fun main() {
     }
 
     fun part2(input: List<String>): Int {
-        return input.size
+        val all = mutableListOf<Int>()
+        var tmp = 0
+        input.forEach {
+            if(it.isNotEmpty()){
+                tmp += it.toInt()
+            } else {
+                all.add(tmp)
+                tmp = 0
+            }
+        }
+        all.sortDescending()
+        return all.subList(0, 3).sum()
     }
 
     // test if implementation meets criteria from the description, like:
@@ -27,5 +38,5 @@ fun main() {
 
     val input = readInput("Day01")
     part1(input).println()
-//    part2(input).println()
+    part2(input).println()
 }
